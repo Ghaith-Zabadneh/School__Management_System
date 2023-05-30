@@ -14,7 +14,7 @@
                 <h4 class="box-title box-title-bold">Student Roll Generator</h4>
               </div>
               <div class="box-body">
-                <form method="GET" action="{{route('reg.search')}}">
+                <form method="POST" action="{{route('roll.store')}}">
                     @csrf
                     <div class="row">                 
                         <div class="col-md-4">
@@ -57,7 +57,7 @@
                                     <tr>
                                         <th>ID Number </th>
                                         <th>Student Name </th>
-                                        <th>Student Father </th>
+                                        <th>Father Name </th>
                                         <th>Gender </th>
                                         <th>Roll </th>
                                     </tr>
@@ -87,6 +87,7 @@
     $(document).on('click','#search',function(){
       var year_id = $('#year_id').val();
       var class_id = $('#class_id').val();
+      
        $.ajax({
         url: "{{ route('roll.get_student')}}",
         type: "GET",
@@ -95,12 +96,13 @@
           $('#roll-generate').removeClass('d-none');
           var html = '';
           $.each( data, function(key, v){
+            console.log(v);
             html +=
             '<tr>'+
-            '<td>'+v.student.id_number+'<input type="hidden" name="student_id[]" value="'+v.student_id+'"></td>'+
-            '<td>'+v.student.name+'</td>'+
-            '<td>'+v.student.personalInformation.fathe_name+'</td>'+
-            '<td>'+v.student.personalInformation.gender+'</td>'+
+            '<td>'+v.id_number+'<input type="hidden" name="student_id[]" value="'+v.student_id+'"></td>'+
+            '<td>'+v.name+'</td>'+
+             '<td>'+v.father_name+'</td>'+
+             '<td>'+v.gender+'</td>'+
             '<td><input type="text" class="form-control form-control-sm" name="roll[]" value="'+v.roll+'"></td>'+
             '</tr>';
           });

@@ -111,8 +111,8 @@ class StudentRegController extends Controller
         }else{
             $data['all_data']= AssignStudent::where('year_id', '=', $request->year_id)->get();
             $data['class_id'] = "";
-        }
-        
+        }  
+              
         return view('Backend.Student.Student_Reg.student_view',compact('data'));
     }
 

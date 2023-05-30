@@ -91,6 +91,9 @@
           <ul class="treeview-menu">
             <li><a href="{{route('reg.index')}}"><i class="ti-more"></i>Student Registration</a></li>
             <li><a href="{{route('roll.index')}}"><i class="ti-more"></i>Roll Generator</a></li>
+            <li><a href="{{route('reg_fee.view')}}"><i class="ti-more"></i>Registration Fee</a></li>
+            <li><a href="{{route('month_fee.view')}}"><i class="ti-more"></i>Monthly Fee</a></li>
+            <li><a href="{{route('exam_fee.view')}}"><i class="ti-more"></i>Exam Fee</a></li>
           </ul>
         </li>
 		
