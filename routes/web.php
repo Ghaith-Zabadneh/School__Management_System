@@ -1,6 +1,8 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Backend\Employee\EmployeeAttendanceController;
+use App\Http\Controllers\Backend\Employee\EmployeeLeaveController;
 use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\Setup\AssignSubjectControler;
 use App\Http\Controllers\Backend\Setup\DesignationControler;
@@ -18,6 +20,9 @@ use App\Http\Controllers\Backend\Student\MonthlyFeeController;
 use App\Http\Controllers\Backend\Student\RegistrationFeeController;
 use App\Http\Controllers\Backend\Student\RollGeneratorController;
 use App\Http\Controllers\Backend\Student\StudentRegController;
+use App\Http\Controllers\Backend\Employee\EmployeeRegController;
+use App\Http\Controllers\Backend\Employee\EmployeeSalaryController;
+use App\Http\Controllers\Backend\Employee\MonthlySalaryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -98,7 +103,7 @@ Route::middleware([
         Route::get('/reg/search',[StudentRegController::class,'show'])->name('reg.search');
         Route::get('/reg/promotion/edit/{id}',[StudentRegController::class,'Promotion_Edit'])->name('reg.promotion.edit');
         Route::post('/reg/promotion/stor/{id}',[StudentRegController::class,'Promotion_Stor'])->name('reg.promotion.stor');
-        Route::get('/details/pdf/{id}',[StudentRegController::class,'Print_PDF'])->name('Student.pdf');;  
+        Route::get('/details/pdf/{id}',[StudentRegController::class,'Print_PDF'])->name('Student.pdf'); 
         // Roll Generator
         Route::resource('roll', RollGeneratorController::class)->only([
             'index', 'show','store'
@@ -126,6 +131,32 @@ Route::middleware([
             Route::get('exam/fee/PaySlip', 'Print_PaySlip')->name('exam.fee.PaySlip');     
         }); //End controller group
    
+    }); //End Student Prefix
+    Route::prefix('employee')->group(function () {
+        // Employee Registration
+        Route::resource('em_reg', EmployeeRegController::class)->except(['destroy','show']);
+        Route::get('/details/pdf/{id}',[EmployeeRegController::class,'Print_PDF'])->name('employee.pdf');
+        
+        // Employee Salary
+        Route::resource('salary', EmployeeSalaryController::class)->only(['index','edit','update','show']);
+        
+        // Leave Employee
+        Route::resource('leave', EmployeeLeaveController::class)->except(['destroy','show']);
+        Route::get('/rehiring/{id}',[EmployeeLeaveController::class,'Return_Employee'])->name('leave.rehiring');
+        
+        // Employee Attendance
+        Route::resource('attendance', EmployeeAttendanceController::class)->except('destroy');
+        
+        // Employee Monthly Salary
+        Route::controller(MonthlySalaryController::class)->group(function () {
+            Route::get('month/salary/view', 'Monthly_Salary_View')->name('month_salary.view');
+            Route::get('month/salary/search', 'Get_Salary_Data')->name('month.salary.search');
+            Route::get('month/salary/print/{employee_id}/{date}', 'Print_Salary_Data')->name('month.salary.print');
+           
+        }); //End controller group
+
+
+
     });
 
     

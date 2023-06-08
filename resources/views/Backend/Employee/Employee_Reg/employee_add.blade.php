@@ -11,18 +11,18 @@
 		 <!-- Basic Forms -->
 		  <div class="box">
 			<div class="box-header with-border">
-			  <h4 class="box-title">Add Student </h4>
+			  <h4 class="box-title">Add Employee </h4>
 			</div>
 			<!-- /.box-header -->
 			<div class="box-body">
 			  <div class="row">
 				<div class="col">
-					<form method="POST" action="{{route('reg.store')}}" enctype="multipart/form-data">
+					<form method="POST" action="{{route('em_reg.store')}}" enctype="multipart/form-data">
                         @csrf
 					  <div class="row">
 							<div class="col-md-4">						
 							    <div class="form-group">
-                                    <h5>Student Name <span class="text-danger">*</span></h5>
+                                    <h5>Employee Name <span class="text-danger">*</span></h5>
                                     <div class="controls">
                                         <input type="text" name="name" value="{{old('name')}}" class="form-control"  data-validation-required-message="This field is required"> <div class="help-block"></div></div>
                                         @if ($errors->has('name'))
@@ -118,16 +118,20 @@
                             </div>
                         </div>{{--  End col --}}
 
-                        <div class="col-md-4">						
+                        <div class="col-md-4">
+
                             <div class="form-group">
-                                <h5> Discount <span class="text-danger"></span></h5>
+                            <h5> Designation <span class="text-danger">*</span></h5>
                                 <div class="controls">
-                                    <input type="text" name="discount" value="{{old('discount')}}" class="form-control"  data-validation-required-message="This field is required"> <div class="help-block"></div></div>
-                                    @if ($errors->has('discount'))
-                                        <span class="text-danger">{{ $errors->first('discount') }}</span>
-                                    @endif   
-                            </div>
-                        </div>{{--  End col --}}
+                                    <select name="designation" required="" value="" class="form-control">
+                                        <option value="" selected="" disabled="">Select Designation</option>
+                                        @foreach($all_data as $designation)
+                                        <option value="{{$designation->id}}" {{old('designation') == $designation->id ? 'selected' : "" }} >{{ $designation->name }}</option>
+                                        @endforeach	 
+                                    </select>
+                                </div>
+                            </div> <!-- // end form group -->
+                        </div> <!-- End col-md-4 -->
 
 
                       </div> {{-- End 3st Row --}}
@@ -135,72 +139,27 @@
 
                       <div class="row">
 
-                        <div class="col-md-4">
-
+                        <div class="col-md-4">						
                             <div class="form-group">
-                            <h5> Class <span class="text-danger">*</span></h5>
+                                <h5>Salary <span class="text-danger">*</span></h5>
                                 <div class="controls">
-                                    <select name="class_id" required="" value="" class="form-control">
-                                        <option value="" selected="" disabled="">Select Class</option>
-                                        @foreach($data['classes'] as $class)
-                                        <option value="{{$class->id}}" {{old('class_id') == $class->id ? 'selected' : "" }} >{{ $class->name }}</option>
-                                        @endforeach	 
-                                    </select>
-                                </div>
-                            </div> <!-- // end form group -->
-                        </div> <!-- End col-md-4 -->
+                                    <input type="text" name="salary" value="{{old('salary')}}" class="form-control"  data-validation-required-message="This field is required"> <div class="help-block"></div></div>
+                                    @if ($errors->has('salary'))
+                                        <span class="text-danger">{{ $errors->first('salary') }}</span>
+                                    @endif   
+                            </div>
+                        </div>{{--  End col --}}
 
-                        <div class="col-md-4">
-
+                        <div class="col-md-4">						
                             <div class="form-group">
-                            <h5> Year <span class="text-danger">*</span></h5>
+                                <h5> Join Date <span class="text-danger">*</span></h5>
                                 <div class="controls">
-                                    <select name="year_id" required=""  class="form-control">
-                                        <option value="" selected="" disabled="">Select Year</option>
-                                        @foreach($data['years'] as $year)
-                                        <option value="{{ $year->id }}" {{old('year_id') == $year->id ? 'selected' : "" }}>{{ $year->name }}</option>
-                                        @endforeach	 
-                                    </select>
-                                </div>
-                            </div> <!-- // end form group -->
-                        </div> <!-- End col-md-4 -->
-
-                        <div class="col-md-4">
-
-                            <div class="form-group">
-                            <h5> Group <span class="text-danger">*</span></h5>
-                                <div class="controls">
-                                    <select name="group_id" required=""  class="form-control">
-                                        <option value="" selected="" disabled="">Select Group</option>
-                                        @foreach($data['groups'] as $group)
-                                        <option value="{{ $group->id }}" {{old('group_id') == $group->id ? 'selected' : "" }}>{{ $group->name }}</option>
-                                        @endforeach	 
-                                    </select>
-                                </div>
-                            </div> <!-- // end form group -->
-                        </div> <!-- End col-md-4 -->
-
-                       
-
-
-                      </div> {{-- End 4st Row --}}
-
-                      <div class="row">
-
-                        <div class="col-md-4">
-
-                            <div class="form-group">
-                            <h5> Shift <span class="text-danger">*</span></h5>
-                                <div class="controls">
-                                    <select name="shift_id" required="" value="{{old('shift_id')}}" class="form-control">
-                                        <option value="" selected="" disabled="">Select Shift</option>
-                                        @foreach($data['shifts'] as $shift)
-                                        <option value="{{ $shift->id }}" {{old('shift_id') == $shift->id ? 'selected' : "" }}>{{ $shift->name }}</option>
-                                        @endforeach	 
-                                    </select>
-                                </div>
-                            </div> <!-- // end form group -->
-                        </div> <!-- End col-md-4 -->  
+                                    <input type="date" name="join_date" value="{{old('join_date')}}" class="form-control"  data-validation-required-message="This field is required"> <div class="help-block"></div></div>
+                                    @if ($errors->has('join_date'))
+                                        <span class="text-danger">{{ $errors->first('join_date') }}</span>
+                                    @endif   
+                            </div>
+                        </div>{{--  End col --}}
 
                         <div class="col-md-4">
                             <div class="form-group">
@@ -211,7 +170,20 @@
                                         <span class="text-danger">{{ $errors->first('image') }}</span>
                                     @endif 
                             </div>
-                        </div>{{--  End col --}}
+                        </div>{{--  End col --}}                     
+
+                      </div> {{-- End 4st Row --}}
+
+                      <div class="row">
+
+                        <div class="col-md-4">
+                          
+                        </div> <!-- End col-md-4 -->
+
+                        <div class="col-md-4">
+                          
+                        </div> <!-- End col-md-4 -->  
+
                         <div class="col-md-4">
                             <div class="form-group">
                                 <div class="controls">

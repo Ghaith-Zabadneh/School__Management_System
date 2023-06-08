@@ -33,7 +33,7 @@
        
             <li class="treeview {{str_contains($name,'users') ? "active" : ""}}">
               <a href="#">
-                <i data-feather="users"></i>
+                <i data-feather="user"></i>
                 <span>Manage User</span>
                 <span class="pull-right-container">
                   <i class="fa fa-angle-right pull-right"></i>
@@ -62,7 +62,7 @@
       
         <li class="treeview {{str_contains($prefix,'setup') ? "active" : ""}}">
           <a href="#">
-            <i data-feather="settings"></i> <span>Setup Management</span>
+            <i data-feather="list"></i> <span>Setup Management</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
             </span>
@@ -83,7 +83,7 @@
 
         <li class="treeview {{str_contains($prefix,'student') ? "active" : ""}}">
           <a href="#">
-            <i data-feather="settings"></i> <span>Student Management</span>
+            <i data-feather="users"></i> <span>Student Management</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
             </span>
@@ -94,6 +94,22 @@
             <li><a href="{{route('reg_fee.view')}}"><i class="ti-more"></i>Registration Fee</a></li>
             <li><a href="{{route('month_fee.view')}}"><i class="ti-more"></i>Monthly Fee</a></li>
             <li><a href="{{route('exam_fee.view')}}"><i class="ti-more"></i>Exam Fee</a></li>
+          </ul>
+        </li>
+
+        <li class="treeview {{str_contains($prefix,'employee') ? "active" : ""}}">
+          <a href="#">
+            <i data-feather="users"></i> <span>Employee Management</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{{route('em_reg.index')}}"><i class="ti-more"></i>Employee Registration</a></li>
+            <li><a href="{{route('salary.index')}}"><i class="ti-more"></i>Employee Salary</a></li>
+            <li><a href="{{route('leave.index')}}"><i class="ti-more"></i>Employee Leave</a></li>
+            <li><a href="{{route('attendance.index')}}"><i class="ti-more"></i>Employee Attendance</a></li>
+            <li><a href="{{route('month_salary.view')}}"><i class="ti-more"></i>Employee Monthly Salary</a></li>
           </ul>
         </li>
 		

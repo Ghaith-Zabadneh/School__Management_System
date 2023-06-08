@@ -19,15 +19,6 @@ class RollGeneratorController extends Controller
         $data['classes'] = StudentClass::all();
         return view('Backend.Student.Roll_Generator.roll_generator_view',$data);
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
     /**
      * Store a newly created resource in storage.
      */
@@ -71,30 +62,5 @@ class RollGeneratorController extends Controller
       }  
       return response()->json($students);
       
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Request $request)
-    {
-        //
-    }
-   
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
     }
 }

@@ -109,7 +109,11 @@
 	      <!-- User Account-->
           <li class="dropdown user user-menu">	
 			<a href="#" class="waves-effect waves-light rounded dropdown-toggle p-0" data-toggle="dropdown" title="User">
+				@if (Auth::user()->user_type == "Employee")
+				<img src="{{ (!empty($user->image)? url('upload/employees/'.$user->image) : url('upload/no_image.jpg') )}}" alt="">
+				@else 
 				<img src="{{ (!empty($user->image)? url('upload/users/'.$user->image) : url('upload/no_image.jpg') )}}" alt="">
+				@endif
 			</a>
 			<ul class="dropdown-menu animated flipInX">
 			  <li class="user-body">

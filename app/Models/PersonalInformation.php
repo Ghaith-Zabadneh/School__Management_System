@@ -18,4 +18,8 @@ class PersonalInformation extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function designation(): BelongsTo
+    {
+        return $this->belongsTo(Designation::class, 'designation_id');
+    }
 }

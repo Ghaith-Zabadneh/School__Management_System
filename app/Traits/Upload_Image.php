@@ -11,4 +11,10 @@ trait Upload_Image {
         return $path;
 
     }
+    public function employee_upload (Request $request,$folder_name){
+        $image= date('Ymd').$request->file('image')->getClientOriginalName();
+        $path= $request->file('image')->storeAs($folder_name,$image,'employees');
+        return $path;
+
+    }
 }
