@@ -5,7 +5,7 @@
  <div class="content-wrapper">
 	  <div class="container-full">
 		<!-- Content Header (Page header) -->
-	
+
 
 <section class="content">
 
@@ -13,7 +13,7 @@
     <div class="box">
         <div class="box-header with-border">
             <h4 class="box-title">Add Assign Subject</h4>
-            
+
         </div>
         <!-- /.box-header -->
         <div class="box-body">
@@ -32,7 +32,7 @@
                                             <option value="" selected="" disabled="">Select Fee Category</option>
                                             @foreach($data['classes'] as $class)
                                                 <option value="{{ $class->id }}">{{ $class->name }}</option>
-                                            @endforeach	 
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div> <!-- // end form group -->
@@ -48,59 +48,59 @@
                                                     <option value="" selected="" disabled="">Select Fee Category</option>
                                                     @foreach($data['subjects'] as $subject)
                                                     <option value="{{ $subject->id }}">{{ $subject->name }}</option>
-                                                    @endforeach	 
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div> <!-- // end form group -->
                                     </div> <!-- End col-md-4 -->
 
                                     <div class="col-md-2">
-                        
+
                                         <div class="form-group">
                                         <h5>Full Mark <span class="text-danger">*</span></h5>
                                             <div class="controls">
-                                                <input type="text" name="full_mark[]" class="form-control" > 
-                                            </div>		 
+                                                <input type="text" name="full_mark[]" class="form-control" required >
+                                            </div>
                                         </div>
 
                                     </div><!-- End col-md-2 -->
                                     <div class="col-md-2">
-                        
+
                                         <div class="form-group">
                                         <h5>Pass mark <span class="text-danger">*</span></h5>
                                             <div class="controls">
-                                                <input type="text" name="pass_mark[]" class="form-control" > 
-                                            </div>		 
+                                                <input type="text" name="pass_mark[]" class="form-control" required >
+                                            </div>
                                         </div>
 
                                     </div><!-- End col-md-2 -->
 
                                     <div class="col-md-2">
-                        
+
                                         <div class="form-group">
                                         <h5>Subjective Mark <span class="text-danger">*</span></h5>
                                             <div class="controls">
-                                                <input type="text" name="subjective_mark[]" class="form-control" > 
-                                            </div>		 
+                                                <input type="text" name="subjective_mark[]" class="form-control" required >
+                                            </div>
                                         </div>
 
                                     </div><!-- End col-md-2 -->
 
                                     <div class="col-md-2" style="padding-top: 25px;">
-                                        <span class="btn btn-success addeventmore"><i class="fa fa-plus-circle"></i> </span>    		
+                                        <span class="btn btn-success addeventmore"><i class="fa fa-plus-circle"></i> </span>
                                     </div><!-- End col-md-2 -->
-                    
+
                                 </div> <!-- end Row -->
 
                             </div>	<!-- // End add_item -->
-                                        
+
                             <div class="text-xs-right">
                                 <input type="submit" class="btn btn-rounded btn-info mb-5" value="Add">
                             </div>
-                            
+
                 </form>
 
-            
+
             </div>
             <!-- /.row -->
         </div>
@@ -109,7 +109,7 @@
     <!-- /.box -->
 
 </section>
-	  
+
 	  </div>
   </div>
 
@@ -118,7 +118,7 @@
   	<div class="whole_extra_item_add" id="whole_extra_item_add">
   		<div class="delete_whole_extra_item_add" id="delete_whole_extra_item_add">
   			<div class="form-row">
-	                	     		
+
                     <div class="col-md-4">
 
                         <div class="form-group">
@@ -128,51 +128,51 @@
                                     <option value="" selected="" disabled="">Select Fee Category</option>
                                     @foreach($data['subjects'] as $subject)
                                     <option value="{{ $subject->id }}">{{ $subject->name }}</option>
-                                    @endforeach	 
+                                    @endforeach
                                 </select>
                             </div>
                         </div> <!-- // end form group -->
                     </div> <!-- End col-md-4 -->
 
                     <div class="col-md-2">
-        
+
                         <div class="form-group">
                         <h5>Full Mark <span class="text-danger">*</span></h5>
                             <div class="controls">
-                                <input type="text" name="full_mark[]" class="form-control" > 
-                            </div>		 
+                                <input type="text" name="full_mark[]" class="form-control" >
+                            </div>
                         </div>
 
                     </div><!-- End col-md-2 -->
                     <div class="col-md-2">
-        
+
                         <div class="form-group">
                         <h5>Pass mark <span class="text-danger">*</span></h5>
                             <div class="controls">
-                                <input type="text" name="pass_mark[]" class="form-control" > 
-                            </div>		 
+                                <input type="text" name="pass_mark[]" class="form-control" >
+                            </div>
                         </div>
 
                     </div><!-- End col-md-2 -->
 
                     <div class="col-md-2">
-        
+
                         <div class="form-group">
                         <h5>Subjective Mark <span class="text-danger">*</span></h5>
                             <div class="controls">
-                                <input type="text" name="subjective_mark[]" class="form-control" > 
-                            </div>		 
+                                <input type="text" name="subjective_mark[]" class="form-control" >
+                            </div>
                         </div>
 
                     </div><!-- End col-md-2 -->
 
      	        <div class="col-md-2" style="padding-top: 25px;">
                     <span class="btn btn-success addeventmore"><i class="fa fa-plus-circle"></i> </span>
-                    <span class="btn btn-danger removeeventmore"><i class="fa fa-minus-circle"></i> </span>    		
-     	        </div><!-- End col-md-2 -->	
-  			  			
-  		</div>  		
-  	</div>  	
+                    <span class="btn btn-danger removeeventmore"><i class="fa fa-minus-circle"></i> </span>
+     	        </div><!-- End col-md-2 -->
+
+  		</div>
+  	</div>
   </div>
 
 

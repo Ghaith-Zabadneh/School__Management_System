@@ -15,7 +15,7 @@ class AssignSubjectControler extends Controller
      */
     public function index()
     {
-        $data=AssignSubject::select('class_id')->groupBy('class_id')->get();     
+        $data=AssignSubject::select('class_id')->groupBy('class_id')->get();
         return view('Backend.Setup.Assign_Subject.assign_view',compact('data'));
     }
 
@@ -72,17 +72,18 @@ class AssignSubjectControler extends Controller
         $data['subjects']=SchoolSubject::all();
         $data['classes']=StudentClass::all();
 
+
         return view('Backend.Setup.Assign_Subject.assign_edit',compact('data'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $class_id)
     {
-        
+
         $count_subject= count($request->subject_id);
-        AssignSubject::where('class_id',$id)->delete();
+        AssignSubject::where('class_id',$class_id)->delete();
         if($count_subject){
             for($i=0;$i<$count_subject;$i++){
                 AssignSubject::create([

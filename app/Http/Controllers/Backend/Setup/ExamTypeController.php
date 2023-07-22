@@ -14,7 +14,7 @@ class ExamTypeController extends Controller
      */
     public function index()
     {
-        $data=ExamType::all();    
+        $data=ExamType::all();
         return view('Backend.Setup.Exam_Type.exam_view',compact('data'));
     }
 
@@ -23,7 +23,7 @@ class ExamTypeController extends Controller
      */
     public function create()
     {
-        return view('Backend.Setup.Exam_Type.exam_add');   
+        return view('Backend.Setup.Exam_Type.exam_add');
     }
 
     /**
@@ -32,14 +32,14 @@ class ExamTypeController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|unique:exam_types,name',       
+            'name' => 'required|unique:exam_types,name',
         ]);
         if ($validator->fails()) {
             return redirect()
                         ->back()
                         ->withErrors($validator);
         }
- 
+
         ExamType::create([
             'name' => $request->name,
         ]);
@@ -48,7 +48,7 @@ class ExamTypeController extends Controller
             'alert-type' => 'success'
         );
 
-        return redirect()->route('exam.index')->with($notification); 
+        return redirect()->route('exam.index')->with($notification);
     }
 
     /**
@@ -74,25 +74,25 @@ class ExamTypeController extends Controller
     public function update(Request $request, string $id)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|unique:exam_types,name',       
+            'name' => 'required|unique:exam_types,name',
         ]);
         if ($validator->fails()) {
             return redirect()
                         ->back()
                         ->withErrors($validator);
         }
-        
+
 
         ExamType::findorFail($id)->update([
             'name' => $request->name,
         ]);
 
         $notification = array(
-            'message'=> 'Class Updated Successfully',
+            'message'=> 'Exam Updated Successfully',
             'alert-type' => 'info'
         );
 
-        return redirect()->route('exam.index')->with($notification); 
+        return redirect()->route('exam.index')->with($notification);
     }
 
     /**
